@@ -1,0 +1,30 @@
+import time
+
+from pages.alerts_page import AlertPage
+from random_utils import RandomUtils
+
+
+def test_alert(browser, config_reader):
+    url = config_reader.get_value("url_2")
+    browser.get(url)
+
+    alert_page = AlertPage(browser)
+    alert_page.wait_for_open()
+
+    alert_page.click_js_alert()
+    browser.wait_alert_presence()
+    assert browser.get_alert_text() == 'I am a JS Alert'
+    browser.close_alert()
+    assert alert_page.get_result_text() == "You successfully clicked an alert"
+
+    alert_page.click_js_confirm()
+    browser.wait_alert_presence()
+    assert browser.get_alert_text() == 'I am a JS Confirm'
+    browser.close_alert()
+    assert alert_page.get_result_text() == "You clicked: Ok"
+
+    alert_page.click_prompt()
+    assert browser.get_alert_text() == "I am a JS prompt"
+    text = RandomUtils.random_text()
+    browser.send_keys_alert(text)
+    assert alert_page.get_result_text() == f"You entered: {text}".strip()
