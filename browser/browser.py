@@ -1,4 +1,5 @@
 import logging
+from operator import index
 
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.alert import Alert
@@ -25,6 +26,10 @@ class Browser:
     def quit(self):
         logging.info(f"Quit browser")
         self.driver.quit()
+
+    def close(self):
+        logging.info("Close")
+        self.driver.close()
 
     def wait_alert_presence(self):
         logging.info(f"wait for the alert to be presence")
@@ -53,4 +58,20 @@ class Browser:
         alert = self.switch_to_alert()
         return alert.text
 
-    # def back(self):
+    def back(self):
+        logging.info("Back")
+        self.driver.back()
+
+    def get_current_url(self):
+        logging.info("Get url")
+        return self.driver.current_url
+
+    def get_title_window(self):
+        logging.info("Get title")
+        return self.driver.title
+
+    def switch_to_window(self, index):
+        logging.info("Switch to window{index}")
+        self.driver.switch_to.window(self.driver.window_handles[index])
+
+
