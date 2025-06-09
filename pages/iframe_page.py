@@ -17,7 +17,8 @@ class IframePage(BasePage):
                                          description='Main Page -> Frames header')
         self.click_frame = WebElement(self.browser.driver, self.ALERT_FRAME_LOC,
                                       description='Main Page -> Click on frame,alert,window')
-        self.click_nester = WebElement(self.browser.driver, self.NESTER_LOC, description='Main Page -> Click on nester')
+        self.click_nester = WebElement(self.browser.driver, self.NESTER_LOC,
+                                       description='Main Page -> Click on nester')
 
     def click_on_section(self):
         self.click_frame.click()

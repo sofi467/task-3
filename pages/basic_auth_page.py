@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.by import By
 from elements.input import Input
 from elements.web_element import WebElement

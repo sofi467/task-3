@@ -1,7 +1,5 @@
-import time
-
 from pages.alerts_page import AlertPage
-from random_utils import RandomUtils
+from utils.random_utils import RandomUtils
 
 
 def test_alert(browser, config_reader):

@@ -77,5 +77,5 @@ class BaseElement:
 
     def scroll(self):
         logging.info(f"scroll to {self.description}")
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        self.wait_for_presence()
+        element = self.wait_for_presence()
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)

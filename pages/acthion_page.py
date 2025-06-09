@@ -1,6 +1,3 @@
-import time
-
-from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 from elements.slider_el import SliderElement
@@ -9,13 +6,13 @@ from pages.base_page import BasePage
 
 class ActhionPage(BasePage):
     UNIQUE_ELEMENT_LOC = (By.XPATH, "//input[@type = 'range']")
-    SLIDER = (By.XPATH, "//input[@type = 'range']")
+    SLIDER_LOC = (By.XPATH, "//input[@type = 'range']")
     RANGE_LOC = (By.ID, "range")
 
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "Acthion_page"
-        self.slider = SliderElement(self.browser.driver, self.SLIDER, description='Slider')
+        self.slider = SliderElement(self.browser.driver, self.SLIDER_LOC, description='Slider')
         self.value_display = SliderElement(self.browser.driver, self.RANGE_LOC, description='Slider value')
         self.unique_element = SliderElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC, description='Slider header')
 

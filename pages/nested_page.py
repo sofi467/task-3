@@ -9,7 +9,7 @@ class NestedPage(BasePage):
     UNIQUE_ELEMENT_LOC = (By.XPATH, "//h1[contains(@class, 'text-center')]")
     CHILD_LOC = (By.XPATH, "//iframe[contains(@srcdoc, 'Child Iframe')]")
     PARENT_LOC = (By.ID, "frame1")
-    FRAMES_CLICK = (By.XPATH, "//*[@id='item-2' and contains(.//span, 'Frames')]")
+    FRAMES_CLICK_LOC = (By.XPATH, "//*[@id='item-2' and contains(.//span, 'Frames')]")
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -19,7 +19,7 @@ class NestedPage(BasePage):
         self.child = IFrame(self.browser.driver, self.CHILD_LOC,
                             description='Main Page -> Child element')
         self.parent = IFrame(self.browser.driver, self.PARENT_LOC, description='Main Page -> Parent Element')
-        self.frames = WebElement(self.browser.driver, self.FRAMES_CLICK, description='Main Page -> Frames switch')
+        self.frames = WebElement(self.browser.driver, self.FRAMES_CLICK_LOC, description='Main Page -> Frames switch')
 
     def presence_of_child(self):
         self.child.wait_for_presence()

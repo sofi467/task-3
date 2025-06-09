@@ -1,4 +1,6 @@
 from pages.dynamic_page import DynamicPage
+
+
 def test_dynamic(browser, config_reader):
     url = config_reader.get_value("url_9")
     browser.get(url)

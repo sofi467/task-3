@@ -8,20 +8,20 @@ from pages.base_page import BasePage
 
 class AlertPage(BasePage):
     UNIQUE_ELEMENT_LOC = (By.XPATH, "//*[contains(text(), 'JavaScript')]")
-    BUTTON_JS_ALERT = (By.XPATH, "//button[@onclick = 'jsAlert()']")
-    RESULT = (By.ID, "result")
-    BUTTON_JS_CONF = (By.XPATH, "//button[@onclick = 'jsConfirm()']")
-    BUTTON_JS_PROMPT = (By.XPATH, "//button[@onclick = 'jsPrompt()']")
+    BUTTON_JS_ALERT_LOC = (By.XPATH, "//button[@onclick = 'jsAlert()']")
+    RESULT_LOC = (By.ID, "result")
+    BUTTON_JS_CONF_LOC = (By.XPATH, "//button[@onclick = 'jsConfirm()']")
+    BUTTON_JS_PROMPT_LOC = (By.XPATH, "//button[@onclick = 'jsPrompt()']")
 
     def __init__(self, browser):
         super().__init__(browser)
-        self.alert_button = Button(self.browser.driver, self.BUTTON_JS_ALERT,
+        self.alert_button = Button(self.browser.driver, self.BUTTON_JS_ALERT_LOC,
                                    description='Main Page -> Click for js alert')
-        self.confirm_button = Button(self.browser.driver, self.BUTTON_JS_CONF,
+        self.confirm_button = Button(self.browser.driver, self.BUTTON_JS_CONF_LOC,
                                      description='Main Page -> Click for js confirm')
-        self.prompt_button = Button(self.browser.driver, self.BUTTON_JS_PROMPT,
+        self.prompt_button = Button(self.browser.driver, self.BUTTON_JS_PROMPT_LOC,
                                     description='Main Page -> Click for js prompt')
-        self.result_text = WebElement(self.browser.driver, self.RESULT,
+        self.result_text = WebElement(self.browser.driver, self.RESULT_LOC,
                                       description='Main Page -> Result text')
         self.page_name = "Alert_page"
         self.unique_element = WebElement(browser.driver, self.UNIQUE_ELEMENT_LOC,

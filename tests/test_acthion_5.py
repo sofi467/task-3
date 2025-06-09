@@ -1,4 +1,4 @@
-from random_utils import RandomUtils
+from utils.random_utils import RandomUtils
 
 from pages.acthion_page import ActhionPage
 

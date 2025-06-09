@@ -13,7 +13,8 @@ class HoversPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "hover_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC, description='Main Page ->Hover header')
+        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+                                         description='Main Page ->Hover header')
 
     def move_to_image(self, i):
         locator = (self.IMG_USER_LOC[0], self.IMG_USER_LOC[1].format(i))

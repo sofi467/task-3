@@ -15,4 +15,3 @@ class Input(BaseElement):
         element = self.wait_for_visible()
         logging.info(f"{self} send key = '{keys} {self.description}'")
         element.send_keys(keys)
-

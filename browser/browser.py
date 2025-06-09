@@ -90,4 +90,3 @@ class Browser:
     def refresh_window(self):
         logging.info("Refresh window")
         self.driver.refresh()
-

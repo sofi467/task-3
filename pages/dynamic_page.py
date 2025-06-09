@@ -1,5 +1,3 @@
-import logging
-
 from selenium.webdriver.common.by import By
 
 from elements.web_element import WebElement
@@ -12,14 +10,13 @@ class DynamicPage(BasePage):
     IMAGE2_SCR_LOC = (By.XPATH, "(//div[contains(@class, 'large-2')]//img)[2]")
     IMAGE3_SCR_LOC = (By.XPATH, "(//div[contains(@class, 'large-2')]//img)[2]")
 
-
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "dynamic_page"
         self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> Dynamic header')
         self.img_1 = WebElement(self.browser.driver, self.IMAGE1_SCR_LOC,
-                                      description='Main Page -> Label IMG 1 ')
+                                description='Main Page -> Label IMG 1 ')
         self.img_2 = WebElement(self.browser.driver, self.IMAGE2_SCR_LOC,
                                 description='Main Page -> Label IMG 2 ')
         self.img_3 = WebElement(self.browser.driver, self.IMAGE2_SCR_LOC,

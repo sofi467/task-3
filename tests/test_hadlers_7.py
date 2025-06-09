@@ -1,5 +1,3 @@
-import time
-
 from pages.hadelrs_page import HadlersPage
 
 
