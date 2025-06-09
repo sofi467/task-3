@@ -74,3 +74,7 @@ class BaseElement:
     def move_to_element(self):
         logging.info(f"{self.description} move to element")
         ActionChains(self.driver).move_to_element(self.wait_for_presence()).perform()
+
+    def scroll(self):
+        logging.info(f"scroll to {self.description} ")
+        self.driver.execute_script("return arguments[0].scrollIntoView(true);", self.wait_for_presence())

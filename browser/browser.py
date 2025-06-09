@@ -74,4 +74,20 @@ class Browser:
         logging.info("Switch to window{index}")
         self.driver.switch_to.window(self.driver.window_handles[index])
 
+    def switch_to_iframe(self, iframe):
+        iframe_element = iframe.wait_for_presence()
+        logging.info("Switch to IFrame")
+        self.driver.switch_to.frame(iframe_element)
+
+    def page_source(self):
+        logging.info("Sourse HTML")
+        return self.driver.page_source
+
+    def switch_to_default(self):
+        logging.info("Switch to Default content")
+        self.driver.switch_to.default_content()
+
+    def refresh_window(self):
+        logging.info("Refresh window")
+        self.driver.refresh()
 

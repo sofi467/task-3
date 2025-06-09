@@ -1,0 +1,31 @@
+from selenium.webdriver.common.by import By
+
+from elements.iframe import IFrame
+from elements.web_element import WebElement
+from pages.base_page import BasePage
+
+
+class NestedPage(BasePage):
+    UNIQUE_ELEMENT_LOC = (By.XPATH, "//h1[contains(@class, 'text-center')]")
+    CHILD_LOC = (By.XPATH, "//iframe[contains(@srcdoc, 'Child Iframe')]")
+    PARENT_LOC = (By.ID, "frame1")
+    FRAMES_CLICK = (By.XPATH, "//*[@id='item-2' and contains(.//span, 'Frames')]")
+
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.page_name = "nested_page"
+        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+                                         description='Main Page -> Nested header')
+        self.child = IFrame(self.browser.driver, self.CHILD_LOC,
+                            description='Main Page -> Child element')
+        self.parent = IFrame(self.browser.driver, self.PARENT_LOC, description='Main Page -> Parent Element')
+        self.frames = WebElement(self.browser.driver, self.FRAMES_CLICK, description='Main Page -> Frames switch')
+
+    def presence_of_child(self):
+        self.child.wait_for_presence()
+
+    def presence_of_parent(self):
+        self.parent.wait_for_presence()
+
+    def click_on_frames(self):
+        self.frames.js_click()
