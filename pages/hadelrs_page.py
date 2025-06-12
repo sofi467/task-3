@@ -12,10 +12,10 @@ class HadlersPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "handlers_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> Handlers header')
-        self.click_link = WebElement(self.browser.driver, self.CLICK_URL_LOC, description='Main Page -> Click on link')
-        self.text_link = WebElement(self.browser.driver, self.TEXT_LOC, description='Main Page -> Get text')
+        self.click_link = WebElement(self.browser, self.CLICK_URL_LOC, description='Main Page -> Click on link')
+        self.text_link = WebElement(self.browser, self.TEXT_LOC, description='Main Page -> Get text')
 
     def click_on_url(self):
         self.click_link.click()

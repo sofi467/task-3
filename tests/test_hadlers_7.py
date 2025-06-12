@@ -25,9 +25,11 @@ def test_handlers(browser, config_reader):
     browser.switch_to_window(-2)
     browser.close()
 
-    assert len(browser.driver.window_handles) == 2, "Window not closed"
+    assert len(browser.driver.window_handles) == 2, f"Expected result:Window closed" \
+                                                    f"Actual result: Window not closed"
 
     browser.switch_to_window(-1)
     browser.close()
 
-    assert len(browser.driver.window_handles) == 1, "Window not closed"
+    assert len(browser.driver.window_handles) == 1, f"Expected result:Window closed" \
+                                                    f"Actual result: Window not closed"

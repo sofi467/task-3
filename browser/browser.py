@@ -47,7 +47,6 @@ class Browser:
     def send_keys_alert(self, text):
         logging.info(f"send {text} to alert")
         self.switch_to_alert().send_keys(text)
-        self.close_alert()
         return text
 
     def close_alert(self):
@@ -79,7 +78,7 @@ class Browser:
         logging.info("Switch to IFrame")
         self.driver.switch_to.frame(iframe_element)
 
-    def page_source(self):
+    def get_page_source(self):
         logging.info("Sourse HTML")
         return self.driver.page_source
 

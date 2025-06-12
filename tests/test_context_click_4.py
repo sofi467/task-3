@@ -8,5 +8,6 @@ def test_alert(browser, config_reader):
     context_menu_page = ContextClick(browser)
     context_menu_page.wait_for_open()
     context_menu_page.context_click()
-    assert browser.get_alert_text() == "You selected a context menu"
+    assert browser.get_alert_text() == "You selected a context menu", f"Expected result: text is displayed" \
+                                                                      f'Actual result: text is not displayed'
     browser.close_alert()

@@ -13,11 +13,11 @@ class InfiniteScrollPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "infinite_scroll_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> Infinite header')
-        self.last_paragraph = WebElement(self.browser.driver, self.PARAGRAPH_LAST_LOC,
+        self.last_paragraph = WebElement(self.browser, self.PARAGRAPH_LAST_LOC,
                                          description='Main Page -> Scroll paragraph')
-        self.all_paragraph = WebElement(self.browser.driver, self.ALL_PARAGRAPH_LOC,
+        self.all_paragraph = WebElement(self.browser, self.ALL_PARAGRAPH_LOC,
                                         description='Main Page -> All paragraph')
 
     def scroll_to_paragraph(self, count):

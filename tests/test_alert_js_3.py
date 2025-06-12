@@ -11,18 +11,25 @@ def test_alert(browser, config_reader):
 
     alert_page.click_js_alert()
     browser.wait_alert_presence()
-    assert browser.get_alert_text() == 'I am a JS Alert'
+    assert browser.get_alert_text() == 'I am a JS Alert', \
+        f"Actual result: {browser.get_alert_text()} is  displayed"
     browser.close_alert()
-    assert alert_page.get_result_text() == "You successfully clicked an alert"
+    assert alert_page.get_result_text() == "You successfully clicked an alert", \
+        f"Actual result: {alert_page.get_result_text()} is displayed"
 
     alert_page.click_js_confirm()
     browser.wait_alert_presence()
-    assert browser.get_alert_text() == 'I am a JS Confirm'
+    assert browser.get_alert_text() == 'I am a JS Confirm', \
+        f"Actual result: {browser.get_alert_text()} is  displayed"
     browser.close_alert()
-    assert alert_page.get_result_text() == "You clicked: Ok"
+    assert alert_page.get_result_text() == "You clicked: Ok", \
+        f"Actual result: {alert_page.get_result_text()} is displayed"
 
     alert_page.click_prompt()
-    assert browser.get_alert_text() == "I am a JS prompt"
+    assert browser.get_alert_text() == "I am a JS prompt", \
+        f"Actual result: {browser.get_alert_text()} is  displayed"
     text = RandomUtils.random_text()
     browser.send_keys_alert(text)
-    assert alert_page.get_result_text() == f"You entered: {text}".strip()
+    browser.close_alert()
+    assert alert_page.get_result_text() == f"You entered: {text}".strip(), \
+        f"Actual result: {alert_page.get_result_text()} is  displayed"

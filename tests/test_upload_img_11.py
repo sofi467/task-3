@@ -17,7 +17,9 @@ def test_upload(browser, config_reader, file):
     upload_img.click_upload()
 
     title_name = upload_img.get_text_title()
-    assert title_name == "File Uploaded!", f"{title_name} Title not corrected"
+    assert title_name == "File Uploaded!", f"Expected result: {title_name} corrected" \
+                                           f"Actual result:{title_name} Title not corrected"
 
     file_name = upload_img.get_text_name()
-    assert file_name == file, f"{file_name} File name not corrected"
+    assert file_name == file, f"Expected result:{file_name} message appeared" \
+                              f"Actual result:{file_name} File name not corrected"

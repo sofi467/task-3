@@ -10,4 +10,5 @@ def test_basic_auth(browser, config_reader, param):
     browser.get(url)
     basic = BasicAuth(browser)
     basic.wait_for_open()
-    assert True
+    assert basic.get_rezult_text() == "Congratulations! You must have the proper credentials.", \
+        f'Actual result:Basic Authorization page not opened'

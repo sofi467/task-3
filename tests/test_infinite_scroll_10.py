@@ -12,4 +12,5 @@ def test_infinite_scroll(browser, config_reader, age):
     scroll.wait_for_open()
 
     count_paragraphs = scroll.scroll_to_paragraph(age)
-    assert count_paragraphs == age, f"{count_paragraphs} The number of paragraphs does not match the age"
+    assert count_paragraphs == age, f"Expected result:The number of paragraphs does match the age" \
+                                    f"Actual result:{count_paragraphs} The number of paragraphs does not match the age"

@@ -16,15 +16,15 @@ class UploadImgPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "upload_img_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> File Upload header')
-        self.select_button = Input(self.browser.driver, self.SELECT_FILE_LOC,
+        self.select_button = Input(self.browser, self.SELECT_FILE_LOC,
                                    description='Main Page -> Select button click')
-        self.upload_button = Button(self.browser.driver, self.UPLOAD_BUTTON_LOC,
+        self.upload_button = Button(self.browser, self.UPLOAD_BUTTON_LOC,
                                     description='Main Page -> Upload button click')
-        self.text = WebElement(self.browser.driver, self.LABLE_TEXT_LOC,
+        self.text = WebElement(self.browser, self.LABLE_TEXT_LOC,
                                description='Main Page -> Title label')
-        self.file_name = WebElement(self.browser.driver, self.FILENAME_LOC,
+        self.file_name = WebElement(self.browser, self.FILENAME_LOC,
                                     description='Main Page -> File name label')
 
     def upload_file(self, file):

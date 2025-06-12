@@ -17,5 +17,8 @@ def test_upload_gialog(browser, config_reader, file):
     relative_path = f"photo/{file}"
     DialogWindowUtils.write_and_enter(os.path.abspath(relative_path))
     file_name = upload_img_dialog.get_text_name()
-    assert file_name == file, f"{file_name} File name not corrected"
-    assert upload_img_dialog.get_check_mark(), "There is not check mark"
+    assert file_name == file, \
+        f"Expected result:{file_name} message appeared" \
+        f"Actual result:{file_name} File name not corrected"
+    assert upload_img_dialog.get_check_mark(), f"Expected result: There is check mark" \
+                                               f"Actual result: There is not check mark"

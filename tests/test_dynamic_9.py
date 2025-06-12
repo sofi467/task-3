@@ -8,4 +8,5 @@ def test_dynamic(browser, config_reader):
     dynamic_page = DynamicPage(browser)
     dynamic_page.wait_for_open()
     dynamic_page.refresh_to_2_img()
-    assert dynamic_page.is_2_img_corrected(), "2 img do not match"
+    src_list = [dynamic_page.get_src_by_index(i) for i in range(1, 4)]
+    assert any(src_list.count(src) > 1 for src in src_list), "2 img do not match"

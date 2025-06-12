@@ -12,11 +12,11 @@ class BaseElement:
     TIMEOUT = cfg.get_value("timeout")
 
     def __init__(self, browser, locator, description=None, timeout=None):
-        self.driver = browser
+        self.browser = browser
         self.loc = locator
         self.description = description
         self.timeout = self.TIMEOUT
-        self.wait = WebDriverWait(self.driver, BaseElement.TIMEOUT)
+        self.wait = WebDriverWait(self.browser.driver, BaseElement.TIMEOUT)
 
     def wait_for_presence(self) -> WebElement:
         logging.info(f"wait for {self.description} to be present")
@@ -47,9 +47,9 @@ class BaseElement:
         element.click()
 
     def js_click(self):
-        web_element = self.wait.until(EC.element_to_be_clickable(self.loc))
+        web_element = self.wait.until(EC.presence_of_element_located(self.loc))
         logging.info(f"click on {self.description} use JS")
-        self.driver.execute_script("arguments[0].click();", web_element)  # добавить в броузер
+        self.browser.driver.execute_script("arguments[0].click();", web_element)  # добавить в броузер
 
     def get_attribute(self, attribute_name):
         logging.info(f"Get attribute '{attribute_name}' from element.")
@@ -63,19 +63,19 @@ class BaseElement:
     def context_click(self):
         element = self.wait.until(EC.element_to_be_clickable(self.loc))
         logging.info("right click")
-        actions = ActionChains(self.driver)
+        actions = ActionChains(self.browser.driver)
         actions.context_click(element).perform()
 
     def click_and_hold(self):
         logging.info(f"{self.description} click and hold")
-        ActionChains(self.driver).click_and_hold(
-            self.wait_for_presence()).release().perform()
+        ActionChains(self.browser.driver).click_and_hold(
+            self.wait_for_visible()).release().perform()
 
     def move_to_element(self):
         logging.info(f"{self.description} move to element")
-        ActionChains(self.driver).move_to_element(self.wait_for_presence()).perform()
+        ActionChains(self.browser.driver).move_to_element(self.wait_for_visible()).perform()
 
     def scroll(self):
         logging.info(f"scroll to {self.description}")
         element = self.wait_for_presence()
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.browser.driver.execute_script("arguments[0].scrollIntoView();", element)

@@ -15,16 +15,16 @@ class AlertPage(BasePage):
 
     def __init__(self, browser):
         super().__init__(browser)
-        self.alert_button = Button(self.browser.driver, self.BUTTON_JS_ALERT_LOC,
+        self.alert_button = Button(self.browser, self.BUTTON_JS_ALERT_LOC,
                                    description='Main Page -> Click for js alert')
-        self.confirm_button = Button(self.browser.driver, self.BUTTON_JS_CONF_LOC,
+        self.confirm_button = Button(self.browser, self.BUTTON_JS_CONF_LOC,
                                      description='Main Page -> Click for js confirm')
-        self.prompt_button = Button(self.browser.driver, self.BUTTON_JS_PROMPT_LOC,
+        self.prompt_button = Button(self.browser, self.BUTTON_JS_PROMPT_LOC,
                                     description='Main Page -> Click for js prompt')
-        self.result_text = WebElement(self.browser.driver, self.RESULT_LOC,
+        self.result_text = WebElement(self.browser, self.RESULT_LOC,
                                       description='Main Page -> Result text')
-        self.page_name = "Alert_page"
-        self.unique_element = WebElement(browser.driver, self.UNIQUE_ELEMENT_LOC,
+        self.page_name = "alert_page"
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> Unique element')
 
     def click_alert(self):

@@ -14,14 +14,14 @@ class UploadImgDialogPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "upload_img_dialog_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
-                                         description='Main Page -> File Upload header')
-        self.loading_field = Input(self.browser.driver, self.UPLOAD_FILE_LOC,
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
+                                         description='Main Page -> File upload header')
+        self.loading_field = Input(self.browser, self.UPLOAD_FILE_LOC,
                                    description='Main Page -> Select button click')
 
-        self.text = WebElement(self.browser.driver, self.LABLE_TEXT_LOC,
+        self.text = WebElement(self.browser, self.LABLE_TEXT_LOC,
                                description='Main Page -> File name  label')
-        self.file_name = WebElement(self.browser.driver, self.CHECK_MARK_LOC,
+        self.file_name = WebElement(self.browser, self.CHECK_MARK_LOC,
                                     description='Main Page -> Check mark label')
 
     def upload_file(self, file):

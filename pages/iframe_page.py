@@ -13,11 +13,11 @@ class IframePage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "iframe_page"
-        self.unique_element = WebElement(self.browser.driver, self.UNIQUE_ELEMENT_LOC,
+        self.unique_element = WebElement(self.browser, self.UNIQUE_ELEMENT_LOC,
                                          description='Main Page -> Frames header')
-        self.click_frame = WebElement(self.browser.driver, self.ALERT_FRAME_LOC,
+        self.click_frame = WebElement(self.browser, self.ALERT_FRAME_LOC,
                                       description='Main Page -> Click on frame,alert,window')
-        self.click_nester = WebElement(self.browser.driver, self.NESTER_LOC,
+        self.click_nester = WebElement(self.browser, self.NESTER_LOC,
                                        description='Main Page -> Click on nester')
 
     def click_on_section(self):
