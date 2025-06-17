@@ -12,8 +12,9 @@ class SliderElement(Input):
         super().__init__(browser, locator, description)
         self.value_display = WebElement(self.browser, self.RANGE_LOC, description='Slider value')
 
-    def move_slider(self, target_value, step):
+    def move_slider(self, target_value):
         current_value = self.get_current_value()
+        step = self.get_step()
         diff = target_value - current_value
         if diff == 0:
             return

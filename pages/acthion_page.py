@@ -15,11 +15,10 @@ class ActionPage(BasePage):
         self.unique_element = SliderElement(self.browser, self.UNIQUE_ELEMENT_LOC, description='Slider header')
 
     def move_slider(self, target_value):
-        self.focus_on_slider()
-        step = self.slider.get_step()
-        self.slider.move_slider(target_value, step)
+        self.click_on_slider()
+        self.slider.move_slider(target_value)
 
-    def focus_on_slider(self):
+    def click_on_slider(self):
         slider_element = self.slider.wait_for_presence()
         actions = self.browser.action_chains
         actions.move_to_element(slider_element).click().perform()
